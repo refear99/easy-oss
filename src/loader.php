@@ -16,7 +16,7 @@ $loader->registerNamespaces(array(
     'Guzzle\\Http' => __DIR__.'/libs/guzzle/http',
     'Symfony\\Component\\EventDispatcher' => __DIR__.'/libs/symfony/event-dispatcher',
     'Symfony\\Component\\ClassLoader' => __DIR__.'/libs/symfony/class-loader',
-    'Aliyun' => __DIR__.'/aliyun',
+    'Aliyun' => __DIR__.'/src',
 ));
 
 $loader->register();
