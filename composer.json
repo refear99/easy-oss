@@ -1,0 +1,22 @@
+{
+  "name": "refear99/easy-oss",
+  "description": "This package provides a easy way to access Aliyun OSS API.",
+  "keywords": ["aliyun", "oss", "easy-oss", "oss-sdk"],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dan",
+      "email": "refear99@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Refear99\\EasyOss\\": "src/"
+    }
+  }
+}
