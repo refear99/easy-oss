@@ -47,6 +47,19 @@ class Object extends Oss
     }
 
     /**
+     * 删除OSS中的文件
+     *
+     * @param string $fileName
+     */
+    public function deleteObject($fileName)
+    {
+        return $this->ossClient->deleteObject([
+            'Bucket' => $this->getBucket(),
+            'Key'    => $fileName
+        ]);
+    }
+
+    /**
      * 获取OSS的文件网址
      *
      * @param string $fileName
