@@ -88,4 +88,21 @@ class Object extends Oss
             return $url;
         }
     }
+
+    /**
+     * 复制OSS的文件网址到另一个OSS的文件下
+     *
+     * @param $fileName
+     * @param $destFileName
+     * @return \Aliyun\OSS\Models\CopyObjectResult
+     */
+    public function copyObject($fileName, $destFileName)
+    {
+        return $this->ossClient->copyObject([
+            'SourceBucket' => $this->getBucket(),
+            'SourceKey' => $fileName,
+            'DestBucket' => $this->getBucket(),
+            'DestKey' => $destFileName,
+        ]);
+    }
 }
