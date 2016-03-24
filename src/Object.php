@@ -50,11 +50,12 @@ class Object extends Oss
      * 删除OSS中的文件
      *
      * @param string $fileName
+     * @param null|string $sourceBucket
      */
-    public function deleteObject($fileName)
+    public function deleteObject($fileName, $sourceBucket = null)
     {
         return $this->ossClient->deleteObject([
-            'Bucket' => $this->getBucket(),
+            'Bucket' => $sourceBucket ? $sourceBucket : $this->getBucket(),
             'Key'    => $fileName
         ]);
     }
@@ -92,16 +93,19 @@ class Object extends Oss
     /**
      * 复制OSS的文件网址到另一个OSS的文件下
      *
-     * @param $fileName
-     * @param $destFileName
+     * @param string $fileName
+     * @param string $destFileName
+     * @param null|string $sourceBucket
+     * @param null|string $destBucket
+     *
      * @return \Aliyun\OSS\Models\CopyObjectResult
      */
-    public function copyObject($fileName, $destFileName)
+    public function copyObject($fileName, $destFileName, $sourceBucket = null, $destBucket = null)
     {
         return $this->ossClient->copyObject([
-            'SourceBucket' => $this->getBucket(),
+            'SourceBucket' => $sourceBucket ? $sourceBucket : $this->getBucket(),
             'SourceKey' => $fileName,
-            'DestBucket' => $this->getBucket(),
+            'DestBucket' => $destBucket ? $destBucket : $this->getBucket(),
             'DestKey' => $destFileName,
         ]);
     }
