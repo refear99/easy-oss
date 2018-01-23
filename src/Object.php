@@ -9,19 +9,22 @@ class Object extends Oss
      *
      * @param string $fileName
      * @param string $filePath
+     * @param array $options
      *
      * @return \Aliyun\OSS\Models\PutObjectResult
      */
-    public function uploadFromFile($fileName, $filePath)
+    public function uploadFromFile($fileName, $filePath, $options = [])
     {
         $file = fopen($filePath, 'r');
 
-        $value = $this->ossClient->putObject([
+        $option = array_merge([
             'Bucket'        => $this->getBucket(),
             'Key'           => $fileName,
             'Content'       => $file,
             'ContentLength' => filesize($filePath)
-        ]);
+        ], $options);
+
+        $value = $this->ossClient->putObject($option);
 
         fclose($file);
 
@@ -33,17 +36,20 @@ class Object extends Oss
      *
      * @param string $fileName
      * @param string $content
+     * @param array $options
      *
      * @return \Aliyun\OSS\Models\PutObjectResult
      */
-    public function uploadFromContent($fileName, $content)
+    public function uploadFromContent($fileName, $content, $options = [])
     {
-        return $this->ossClient->putObject([
+        $option = array_merge([
             'Bucket'        => $this->getBucket(),
             'Key'           => $fileName,
             'Content'       => $content,
             'ContentLength' => strlen($content)
-        ]);
+        ], $options);
+
+        return $this->ossClient->putObject($option);
     }
 
     /**
