@@ -2,7 +2,7 @@
 
 namespace Refear99\EasyOss;
 
-class Object extends Oss
+class OssObject extends Oss
 {
     /**
      * 从文件路径上传文件

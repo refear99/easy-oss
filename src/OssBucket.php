@@ -2,6 +2,6 @@
 
 namespace Refear99\EasyOss;
 
-class Bucket extends Oss {
+class OssBucket extends Oss {
 
 }
